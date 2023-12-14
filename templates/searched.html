@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% for search in searched %}
+
+<a href="{% url 'profile' search.id %}"><div>
+    {{search.username}}
+</div></a>
+{% endfor %}
+{% endblock %}
