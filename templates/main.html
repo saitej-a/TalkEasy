@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/png" href="/templates/SharedScreenshot.png"/>
+    <title>Tangme</title>
+    <style>
+       body{
+        margin: 0;
+        padding: 0;
+        
+       }
+       
+
+       
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    {% block content %}
+    
+
+    {% endblock %}
+
+</body>
+<script type="text/javascript">
+    $(document).on('submit','#post-form',function(e){
+      e.preventDefault();
+  
+      $.ajax({
+        type:'POST',
+        url:'/send',
+        data:{
+            chat:$('#chat').val(),
+            body:$('#body').val(),
+            
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(data){
+           //alert(data)
+        }
+      });
+      document.getElementById('body').value = ''
+    });
+  </script>
+  
+</html>

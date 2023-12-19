@@ -1,0 +1,493 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+{% load static %}
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background:#3b4949 ;
+  
+  padding: 0 0;
+  
+}
+
+.container {
+  margin: 10px auto;
+  width: 750px;
+  background: #444753;
+  border-radius: 5px;
+}
+
+.people-list {
+  width:260px;
+  float: left;
+  height: 453.6px;
+  overflow-y: scroll;
+  
+
+  
+  input {
+    border-radius: 3px;
+    border: none;
+    padding: 14px;
+    color: white;
+    background: #6A6C75;
+    width: 90%;
+    font-size: 14px;
+  }
+  
+  .fa-search {
+    position: relative;
+    left: -25px;
+  }
+  
+  ul {
+    padding: 20px;
+    height: 770px;
+ 
+    
+    
+    
+    
+  }
+  li {
+      padding-bottom: 20px;
+    }
+  
+  img {
+    float: left;
+  }
+  
+  .about {
+    float: left;
+    margin-top: 8px;
+  }
+  
+  .about {
+    padding-left: 8px;
+  }
+  
+  .status {
+    color: gray;
+  }
+  
+}
+
+.chat {
+  width: 490px;
+  float:left;
+  background: #F2F5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  
+  color: #434651;
+  
+}
+  .chat-header {
+    padding: 20px;
+    border-bottom: 2px solid white;
+  }
+    img {
+      float: left;
+    }
+    
+    .chat-about {
+      float: left;
+      padding-left: 10px;
+      margin-top: 6px;
+    }
+    
+    .chat-with {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .chat-num-messages {
+      color: gray;
+    }
+    
+    .fa-star {
+      float: right;
+      color: #D8DADF;
+      font-size: 20px;
+      margin-top: 12px;
+    }
+  
+  
+  .chat-history {
+    padding: 30px 30px 20px;
+    border-bottom: 2px solid white;
+    overflow-y: scroll;
+    height: 152px;
+  }    
+    .message-data{
+      margin-bottom: 15px;
+    }
+    
+    .message-data-time {
+      color: lighten(gray, 8%);
+      padding-left: 6px;
+    }
+    
+    .message {      
+      color: black;
+      padding: 18px 20px;
+      line-height: 26px;
+      font-size: 16px;
+      border-radius: 7px;
+      margin-bottom: 30px;
+      width: 90%;
+      position: relative;
+      
+      &:after {
+        bottom: 100%;
+        left: 7%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: green;
+        border-width: 10px;
+        margin-left: -10px;
+      }
+    }
+    
+    .my-message {
+      background: green;
+    }
+    
+    .other-message {
+      background: rgb(143, 143, 231);
+      
+      &:after {
+        border-bottom-color: rgb(143, 143, 231);
+        left: 93%;
+      }
+    }
+    
+  
+  .message-to-send{
+      width: 90%;
+      border: none;
+      padding: 10px 20px;
+      font: 14px/22px "Lato", Arial, sans-serif;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      resize: none;
+      
+    }
+  
+  .chat-message {
+    padding: 30px;
+    
+    
+  } 
+    .fa-file-o, .fa-file-image-o {
+      font-size: 16px;
+      color: gray;
+      cursor: pointer;
+      
+    }
+    
+    button {
+      float: right;
+      color: blue;
+      font-size: 16px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: #F2F5F8;
+      
+      &:hover {
+        color: darken(blue, 7%);
+      }
+    }
+  
+
+
+.online, .offline, .me {
+    margin-right: 3px;
+    font-size: 10px;
+  }
+  
+.online {
+  color: green;
+}
+  
+.offline {
+  color: orange;
+}
+
+.me {
+  color: blue;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+@media only screen and (max-width:768px) {
+  .container {
+  display: flex;
+  flex:0.5 1;
+  margin: 10px auto;
+  width: 80%;
+  background: #444753;
+  border-radius: 5px;
+}
+
+.people-list {
+
+  float: left;
+  height: 553.6px;
+  overflow-y: scroll;
+  
+
+  
+  input {
+    border-radius: 3px;
+    border: none;
+    padding: 14px;
+    color: white;
+    background: #6A6C75;
+    width: 90%;
+    font-size: 14px;
+  }
+  
+  .fa-search {
+    position: relative;
+    left: -25px;
+  }
+  
+  ul {
+    padding: 20px;
+    height: 770px;
+ 
+    
+    
+    
+    
+  }
+  li {
+      padding-bottom: 20px;
+    }
+  
+  img {
+    float: left;
+  }
+  
+  .about {
+    float: left;
+    margin-top: 8px;
+  }
+  
+  .about {
+    padding-left: 8px;
+  }
+  
+  .status {
+    color: gray;
+  }
+  
+}
+
+.chat {
+  
+  float:left;
+  background: #F2F5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  
+  color: #434651;
+  
+}
+.chat-history {
+    padding: 30px 30px 20px;
+    border-bottom: 2px solid white;
+    overflow-y: scroll;
+    height: 252px;
+  }
+}
+
+</style>
+<div class="container clearfix">
+    <div class="people-list" id="people-list">
+      <ul class="list">
+        <li class="clearfix">
+          
+          <div class="about">
+
+        {% for user in name %}
+        
+         
+           
+                        <div class="name"><a style="color: white;" href="{% url 'messages' user.id %}"><div>
+                          {{user.naam}}
+                          
+                        </div></a></div>
+                        {% endfor %}
+                      </div>
+                    </li>
+                    
+                  </ul>
+                </div>
+            
+    
+        
+    
+    
+    
+
+   {% if user_msg == 'TalkEasy' %}
+
+    
+        <div class="chat" style="font-family: 'Arial';font-size: 50px;display: flex;justify-content: center;align-items: center;height: 453.6px;">
+        
+        TalkEasy
+        
+    </div>
+    
+    {% else %}
+    
+    <div class="chat">
+        <div class="chat-header clearfix">
+          
+          
+          <div class="chat-about">
+            <div class="chat-with">{{chat.sender.username}}</div>
+            <div class="chat-num-messages">{{count}} messages</div>
+          </div>
+          <i class="fa fa-star"></i>
+        </div> <!-- end chat-header -->
+        
+        <div class="chat-history">
+          <ul id="display">
+        </ul>
+        
+    </div> <!-- end chat-history -->
+    
+   
+
+    
+        
+        
+    
+
+
+    <form action="" id="post-form">
+        {% csrf_token %}
+        <div class="chat-message clearfix">
+            <textarea name="body" id='body' class="message-to-send" placeholder ="Type your message" rows="3" autofocus ></textarea>
+                    <input type="hidden" name="chat" id="chat" value="{{chat}}">
+                    
+            <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-file-image-o"></i>
+            
+            <button type="submit">Send</button>
+    
+        </div>
+        <!-- <input type="text" name="body" id='body' placeholder="enter your text" autofocus>
+        <input type="hidden" name="chat" id="chat" value="{{chat}}">
+        <input type="submit" value="Send"> -->
+    
+    </form>
+    
+    <script>
+    
+    // console.log(mes.scrollHeight);
+    // console.log(mes.clientHeight)
+    
+    
+    $(document).ready(function(){
+    
+    setInterval(function(){
+        $.ajax({
+            type: 'GET',
+            url : "/getMessages/{{chat}}/",
+            success: function(response){
+                
+                $("#display").empty();
+                
+                
+                for (var key in response.messages)
+                { 
+                    
+                    var user=''
+                    var time = response.messages[key]['created'];
+                    var sender= response.messages[key]['sender_id'];
+                    var reciever= response.messages[key]['reciever_id'];
+                    var date=time.slice(0,10);
+                    var time=time.slice(11,-8);
+                    
+                    if (sender===response.user_id){
+                      var temp='<li class="clearfix" id="new"><div class="message-data align-right"><span class="message-data-time" >'+date+ ', '+ time+'</span> &nbsp; &nbsp;  <span class="message-data-name" >'+ "You" +'</span> <i class="fa fa-circle me"></i></div><div class="message other-message float-right">'+response.messages[key]["body"]+'</div></li>';
+                      
+                      
+                    }
+                    else{
+                      var temp='<li class="clearfix" id="new"><div class="message-data"><span class="message-data-time" >'+date+ ', '+ time+'</span> &nbsp; &nbsp;  <span class="message-data-name" >'+ response.username
+                         +'</span> <i class="fa fa-circle me"></i></div><div class="message my-message">'+response.messages[key]["body"]+'</div></li>';
+                    }
+
+                    
+                    
+                    
+                    $("#display").append(temp);
+                    
+    
+                    
+                }
+                
+                
+                
+            },
+            error: function(response){
+                alert('An error occured')
+            }
+        });
+        
+    },1000);})
+    
+
+    </script>
+    
+    {% endif %}
+
+</div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    {{prof.username}}
+
+</div>
+<div>
+    <a href="{% url 'newchat' prof.username %}">Chat with {{prof.username}}</a>
+</div>
+{% endblock %}

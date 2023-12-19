@@ -1,0 +1,79 @@
+{% block content %}
+
+<style>
+    a{
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        color: black;
+    }
+    .div{
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr 1fr;
+        background-color: #6fb8b8;
+        height:40px;
+        align-items: center;
+        width: 100%;
+        margin-top: 0;
+    }
+    #logo{
+        margin-left: 20px;
+    }
+    #search{
+  width:auto;
+
+}
+a{
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        color: black;
+    }
+    .div{
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr 1fr;
+        background-color: #6fb8b8;
+        height:40px;
+        align-items: center;
+        width: 100%;
+        margin-top: 0;
+    }
+    #logo{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    #form1{
+      display: flex;
+      flex: 2 1;
+    }
+    #user{
+      margin-right: 10px;
+    }
+
+</style>
+
+    <div class="div">
+        <div>
+        <a href="{% url 'home' %}" id="logo" >TalkEasy</a>
+        </div>
+        <div><form action="search" method="get" id="form1">
+            
+            <input id="search" style="width:80%;border: none;height: 25px;" type="text" name="q" placeholder="Search An User">
+            <input type="submit" value="Search" style="border: none;height: 27px;background-color:transparent;color: black;">
+        </form>
+        </div>
+        <div style="display: flex;justify-content: end;" id="user">
+            {{request.user}}
+        </div>
+        <div style="display: flex;justify-content: end;">
+            
+            <small>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" style="margin-right: 20px;">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}" style="margin-right: 20px;"">Login</a>
+                {% endif %}
+            </small>
+        </div>
+
+    </div>
+
+{% endblock %}
